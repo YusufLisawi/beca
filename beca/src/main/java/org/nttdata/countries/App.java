@@ -55,15 +55,14 @@ public class App extends Frame {
         pNav = new Panel();
 
         pAction.setLayout(new GridLayout(1, 4));
+        pLabel.setLayout(new GridLayout(4, 1));
+        pText.setLayout(new GridLayout(4, 1));
+        pNav.setLayout(new GridLayout(1, 4));
+
         pAction.add(btnAdd);
         pAction.add(btnEdit);
         pAction.add(btnSave);
         pAction.add(btnDelete);
-
-        pLabel.setLayout(new GridLayout(4, 1));
-        pText.setLayout(new GridLayout(4, 3));
-        pNav.setLayout(new GridLayout(1, 4));
-
 
         pLabel.add(lblName);
         pText.add(txtName);
@@ -129,12 +128,13 @@ public class App extends Frame {
         btnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (index < 0) return;
+                if (index < 0 || lstCountries.isEmpty()) return;
                 int res = JOptionPane.showConfirmDialog(App.this, "Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if (res == JOptionPane.YES_OPTION) {
                     lstCountries.remove(index);
                     index = 0;
                     updateTexts();
+                    fileManager.saveCountries();
                 }
             }
         });
@@ -175,11 +175,8 @@ public class App extends Frame {
 
         this.addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
-                int res = JOptionPane.showConfirmDialog(App.this, "Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (res == JOptionPane.YES_OPTION) {
-                    fileManager.saveCountries();
-                    System.exit(0);
-                }
+                fileManager.saveCountries();
+                System.exit(0);
             }
         });
         this.setVisible(true);
