@@ -1,2 +1,2 @@
-morocco;rabat;90000;africa
-cote d'ivoire;abidjan;9000;africa
+tinest;testing'8888;africa
+test;hello'9999;test

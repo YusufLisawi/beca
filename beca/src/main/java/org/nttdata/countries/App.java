@@ -126,7 +126,7 @@ public class App extends Frame {
                 int res = JOptionPane.showConfirmDialog(App.this, "Are you sure?", "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if (res == JOptionPane.YES_OPTION) {
                     lstCountries.remove(index);
-                    index--;
+                    index = 0;
                     updateTexts();
                 }
             }

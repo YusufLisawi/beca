@@ -34,7 +34,7 @@ public class FileManager {
         try {
             PrintWriter writer = new PrintWriter(path);
             for (Country country : countries) {
-                writer.println(country.getName() + ";" + country.getCapital() + ";" + country.getPopulation() + ";" + country.getContinent());
+                writer.println(country);
             }
             writer.close();
         } catch (Exception e) {
