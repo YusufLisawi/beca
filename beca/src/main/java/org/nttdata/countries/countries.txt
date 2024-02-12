@@ -1,2 +1,2 @@
-maroc;rabat;90000;africa
+morocco;rabat;90000;africa
 cote d'ivoire;abidjan;9000;africa

@@ -19,7 +19,7 @@ public class App extends Frame {
 
     private Panel pAction, pLabel, pText, pNav, pInputs;
     private int index = 0;
-    private String mode = "add";
+    private String mode = "";
 
     public App() {
         super("Atlas");
@@ -115,6 +115,7 @@ public class App extends Frame {
                 btnSave.disable();
                 disableTexts();
                 fileManager.saveCountries();
+                mode = "";
             }
         });
 
@@ -206,17 +207,31 @@ public class App extends Frame {
     }
 
     private void disableTexts() {
-        txtName.disable();
-        txtCapital.disable();
-        txtPopulation.disable();
-        txtContinent.disable();
+        txtName.setEditable(false);
+        txtCapital.setEditable(false);
+        txtPopulation.setEditable(false);
+        txtContinent.setEditable(false);
+        toggleBtns(false);
     }
 
     private void enableTexts() {
-        txtName.enable();
-        txtCapital.enable();
-        txtPopulation.enable();
-        txtContinent.enable();
+        txtName.setEditable(true);
+        txtCapital.setEditable(true);
+        txtPopulation.setEditable(true);
+        txtContinent.setEditable(true);
+        toggleBtns(true);
+    }
+
+    private void toggleBtns(boolean toggle) {
+        if (toggle) {
+            btnAdd.disable();
+            btnDelete.disable();
+            btnEdit.disable();
+        } else {
+            btnAdd.enable();
+            btnDelete.enable();
+            btnEdit.enable();
+        }
     }
 
     public static void main(String[] args) {
