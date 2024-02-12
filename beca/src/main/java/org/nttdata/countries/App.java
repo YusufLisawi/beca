@@ -86,34 +86,41 @@ public class App extends Frame {
 
         this.updateTexts();
 
-        btnSave.disable();
-        this.disableTexts();
+        this.toggleBtns(false);
 
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mode = "add";
+                txtName.requestFocus();
                 clear();
-                enableTexts();
-                btnSave.enable();
+                toggleBtns(true);
+            }
+        });
+
+        btnEdit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                mode = "edit";
+                txtName.requestFocus();
+                toggleBtns(true);
             }
         });
 
         btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (Objects.equals(mode, "add")) {
+                if (mode.equals("add")) {
                     Country tmp = new Country(txtName.getText(), txtCapital.getText(), Integer.parseInt(txtPopulation.getText()), txtContinent.getText());
                     lstCountries.add(tmp);
-                } else if (Objects.equals(mode, "edit")) {
+                } else if (mode.equals("edit")) {
                     Country current = lstCountries.get(index);
                     current.setName(txtName.getText());
                     current.setCapital(txtCapital.getText());
                     current.setPopulation(Integer.parseInt(txtPopulation.getText()));
                     current.setContinent(txtContinent.getText());
                 }
-                btnSave.disable();
-                disableTexts();
+                toggleBtns(false);
                 fileManager.saveCountries();
                 mode = "";
             }
@@ -129,15 +136,6 @@ public class App extends Frame {
                     index = 0;
                     updateTexts();
                 }
-            }
-        });
-
-        btnEdit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mode = "edit";
-                enableTexts();
-                btnSave.enable();
             }
         });
 
@@ -206,32 +204,21 @@ public class App extends Frame {
         txtContinent.setText("");
     }
 
-    private void disableTexts() {
-        txtName.setEditable(false);
-        txtCapital.setEditable(false);
-        txtPopulation.setEditable(false);
-        txtContinent.setEditable(false);
-        toggleBtns(false);
-    }
-
-    private void enableTexts() {
-        txtName.setEditable(true);
-        txtCapital.setEditable(true);
-        txtPopulation.setEditable(true);
-        txtContinent.setEditable(true);
-        toggleBtns(true);
-    }
-
     private void toggleBtns(boolean toggle) {
-        if (toggle) {
-            btnAdd.disable();
-            btnDelete.disable();
-            btnEdit.disable();
-        } else {
-            btnAdd.enable();
-            btnDelete.enable();
-            btnEdit.enable();
-        }
+        btnAdd.setEnabled(!toggle);
+        btnDelete.setEnabled(!toggle);
+        btnEdit.setEnabled(!toggle);
+        btnSave.setEnabled(toggle);
+
+        btnLast.setEnabled(!toggle);
+        btnNext.setEnabled(!toggle);
+        btnPrevious.setEnabled(!toggle);
+        btnFirst.setEnabled(!toggle);
+
+        txtName.setEditable(toggle);
+        txtCapital.setEditable(toggle);
+        txtPopulation.setEditable(toggle);
+        txtContinent.setEditable(toggle);
     }
 
     public static void main(String[] args) {

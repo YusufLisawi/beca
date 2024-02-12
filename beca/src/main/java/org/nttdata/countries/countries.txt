@@ -1,2 +1,1 @@
-tinest;testing'8888;africa
-test;hello'9999;test
+Morocco;Rabat;35000;Africa
