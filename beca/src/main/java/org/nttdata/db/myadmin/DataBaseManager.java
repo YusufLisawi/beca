@@ -2,10 +2,7 @@ package org.nttdata.db.myadmin;
 
 
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class DataBaseManager {
     private static final String DB_URL = "jdbc:mysql://localhost/";
@@ -26,24 +23,17 @@ public class DataBaseManager {
         return conn;
     }
 
-    public static void init() throws SQLException {
-        Connection conn = connect();
-        Statement st = conn.createStatement();
-        st.execute("INSERT INTO country (name, capital, population, continent) VALUES\n" +
-                "('USA', 'Washington D.C.', 328200000, 'North America'),\n" +
-                "('Canada', 'Ottawa', 37740000, 'North America'),\n" +
-                "('Brazil', 'Brasília', 212600000, 'South America'),\n" +
-                "('France', 'Paris', 67200000, 'Europe'),\n" +
-                "('Germany', 'Berlin', 83020000, 'Europe'),\n" +
-                "('China', 'Beijing', 1400050000, 'Asia'),\n" +
-                "('India', 'New Delhi', 1380004385, 'Asia'),\n" +
-                "('Australia', 'Canberra', 25510000, 'Oceania'),\n" +
-                "('South Africa', 'Pretoria', 59310000, 'Africa'),\n" +
-                "('Argentina', 'Buenos Aires', 44940000, 'South America');");
-    }
-
 //    public static void main(String[] args) throws SQLException {
-//        init();
+//        Connection conn = connect();
+//
+//        Statement st = conn.createStatement();
+//        ResultSet rs = st.executeQuery("SHOW DATABASES;");
+//
+//        while (rs.next()) {
+//            System.out.println(rs.getString(1));
+//        }
+//        st.close();
+//        rs.close();
 //    }
 
 }
