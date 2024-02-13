@@ -38,19 +38,36 @@ public class App extends Frame {
         btnAdd.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mode = "add";
-                txtName.requestFocus();
-                clear();
-                toggleBtns(true);
+                if (btnAdd.getLabel().equals("Add")) {
+                    mode = "add";
+                    txtName.requestFocus();
+                    clear();
+                    toggleBtns(true);
+                    btnAdd.setLabel("Cancel");
+                } else if (btnAdd.getLabel().equals("Cancel")) {
+                    mode = "";
+                    updateTexts();
+                    toggleBtns(false);
+                    btnAdd.setLabel("Add");
+                }
             }
         });
 
         btnEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                mode = "edit";
-                txtName.requestFocus();
-                toggleBtns(true);
+                if (btnEdit.getLabel().equals("Edit")) {
+                    mode = "edit";
+                    txtName.requestFocus();
+                    clear();
+                    toggleBtns(true);
+                    btnEdit.setLabel("Cancel");
+                } else if (btnEdit.getLabel().equals("Cancel")) {
+                    mode = "";
+                    updateTexts();
+                    toggleBtns(false);
+                    btnEdit.setLabel("Edit");
+                }
             }
         });
 
@@ -195,9 +212,11 @@ public class App extends Frame {
     }
 
     private void toggleBtns(boolean toggle) {
-        btnAdd.setEnabled(!toggle);
+        if (mode.equals("edit") || mode.isEmpty())
+            btnAdd.setEnabled(!toggle);
+        if (mode.equals("add") || mode.isEmpty())
+            btnEdit.setEnabled(!toggle);
         btnDelete.setEnabled(!toggle);
-        btnEdit.setEnabled(!toggle);
         btnSave.setEnabled(toggle);
 
         btnLast.setEnabled(!toggle);
