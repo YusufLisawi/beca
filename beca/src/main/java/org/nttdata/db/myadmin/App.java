@@ -85,12 +85,13 @@ public class App extends JFrame implements ActionListener {
 
         databaseChoice.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                tablesList.removeAll();
+                DefaultListModel<String> model = new DefaultListModel<>();
+                tablesList.setModel(model);
                 if (Objects.equals(databaseChoice.getSelectedItem(), "None")) return;
                 try {
                     st.execute("USE " + databaseChoice.getSelectedItem() + ";");
                     ResultSet rs = st.executeQuery("SHOW TABLES;");
-                    DefaultListModel<String> model = new DefaultListModel<>();
+                    model = new DefaultListModel<>();
                     while (rs.next()) {
                         model.addElement(rs.getString(1));
                     }
@@ -103,10 +104,12 @@ public class App extends JFrame implements ActionListener {
         });
 
         tablesList.addListSelectionListener(new ListSelectionListener() {
-
             @Override
             public void valueChanged(ListSelectionEvent arg) {
-                if (!arg.getValueIsAdjusting()) {
+                if (!arg.getValueIsAdjusting() && tablesList.getSelectedValue() == null)
+                    resultTextArea.setText("");
+
+                if (!arg.getValueIsAdjusting() && tablesList.getSelectedValue() != null) {
                     String result;
                     try {
                         st.execute("DESCRIBE " + tablesList.getSelectedValue() + ";");
@@ -139,31 +142,31 @@ public class App extends JFrame implements ActionListener {
                 resultTextArea.setText(ex.getMessage());
             }
         };
-        if (e.getSource() != executeButton) return;
-
-        String query = queryTextArea.getText().toLowerCase().trim();
-        try {
-            if (query.startsWith("show")) {
-                ResultSet rs = st.executeQuery(query);
-                StringBuilder stringBuilder = new StringBuilder();
-                while (rs.next()) {
-                    stringBuilder.append(rs.getString(1)).append("\n");
+        if (e.getSource() == executeButton) {
+            String query = queryTextArea.getText().toLowerCase().trim();
+            try {
+                if (query.startsWith("show")) {
+                    ResultSet rs = st.executeQuery(query);
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while (rs.next()) {
+                        stringBuilder.append(rs.getString(1)).append("\n");
+                    }
+                    resultTextArea.setText(stringBuilder.toString());
+                    rs.close();
                 }
-                resultTextArea.setText(stringBuilder.toString());
-                rs.close();
+                else if (st.execute(query)) {
+                    String result = getQueryResult();
+                    resultTextArea.setText(result);
+                } else {
+                    int linesAffected = st.getUpdateCount();
+                    resultTextArea.setText(linesAffected + " Lines have been " + (query.startsWith("delete") ? "deleted" : "updated"));
+                }
+            } catch (SQLException ex) {
+                resultTextArea.setText(ex.getMessage());
             }
-            else if (st.execute(query)) {
-                String result = getQueryResult();
-                resultTextArea.setText(result);
-            } else {
-                int linesAffected = st.getUpdateCount();
-                resultTextArea.setText(linesAffected + " Lines have been " + (query.startsWith("delete") ? "deleted" : "updated"));
-            }
-        } catch (SQLException ex) {
-            resultTextArea.setText(ex.getMessage());
-        }
 
-        queryTextArea.setText("");
+            queryTextArea.setText("");
+        }
     }
 
     private void initData() {
