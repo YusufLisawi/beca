@@ -15,7 +15,7 @@ public class App extends JFrame implements ActionListener {
     JComboBox<String> databaseChoice;
     JTextArea queryTextArea, resultTextArea;
     JList<String> tablesList;
-    JButton executeButton;
+    JButton executeButton, btnShowRecords;
 
     private Connection conn;
     private Statement st;
@@ -60,6 +60,11 @@ public class App extends JFrame implements ActionListener {
 
         serverPanel.add(new JLabel("Tables:"));
         serverPanel.add(new JScrollPane(tablesList));
+
+        btnShowRecords = new JButton("Select *");
+        btnShowRecords.addActionListener(this);
+
+        serverPanel.add(btnShowRecords);
 
         JPanel northPanel = new JPanel();
         northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.PAGE_AXIS));
@@ -129,6 +134,18 @@ public class App extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnShowRecords) {
+            String selectedTable = tablesList.getSelectedValue();
+            if (selectedTable != null) {
+                try {
+                    ResultSet rs = st.executeQuery("SELECT * FROM " + selectedTable);
+                    String result = getQueryResult();
+                    resultTextArea.setText(result);
+                } catch (SQLException ex) {
+                    resultTextArea.setText(ex.getMessage());
+                }
+            }
+        }
         if (e.getSource() == btnConnect) {
             String host = txtHost.getText();
             String username = txtUsername.getText();
@@ -141,7 +158,7 @@ public class App extends JFrame implements ActionListener {
             } catch (SQLException ex) {
                 resultTextArea.setText(ex.getMessage());
             }
-        };
+        }
         if (e.getSource() == executeButton) {
             String query = queryTextArea.getText().toLowerCase().trim();
             try {
