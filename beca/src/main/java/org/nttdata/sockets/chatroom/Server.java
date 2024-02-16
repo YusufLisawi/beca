@@ -3,10 +3,12 @@ package org.nttdata.sockets.chatroom;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Server {
     private final Hashtable<Socket, DataOutputStream> clients = new Hashtable<>();
+    private final ArrayList<String> messages = new ArrayList<>();
 
     public Server(int port) {
         try {
@@ -28,6 +30,7 @@ public class Server {
         try {
             synchronized (clients) {
                 for (DataOutputStream dataOutputStream : clients.values()) {
+                    messages.add(msg);
                     dataOutputStream.writeUTF(msg);
                     dataOutputStream.flush();
                 }
@@ -39,6 +42,10 @@ public class Server {
 
     public Hashtable<Socket, DataOutputStream> getClients() {
         return clients;
+    }
+
+    public ArrayList<String> getMessages() {
+        return messages;
     }
 
     public static void main(String[] args) {
