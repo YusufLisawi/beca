@@ -31,7 +31,7 @@ public class ServerThread extends Thread {
                 String msg = dataInputStream.readUTF();
                 server.broadCast(msg);
             } catch (EOFException e) {
-                System.out.println("Client disconnected");
+                System.out.println("Client " + socket + " disconnected");
                 server.getClients().remove(socket);
                 break;
             } catch (IOException e) {

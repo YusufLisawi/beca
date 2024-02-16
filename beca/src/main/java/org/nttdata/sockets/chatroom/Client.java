@@ -62,6 +62,7 @@ public class Client extends JFrame implements Runnable {
             System.out.println("Connected to server");
         } catch (Exception e) {
             System.err.println(e.getMessage());
+            System.exit(1);
         }
         new Thread(this).start();
     }
@@ -80,7 +81,6 @@ public class Client extends JFrame implements Runnable {
     }
 
     public static void main(String[] args) {
-        Client client1 = new Client("Youssef", "localhost", 9090);
-        Client client2 = new Client("ElAissaoui", "localhost", 9090);
+        Client client2 = new Client("Youssef El Aissaoui", "10.131.118.36", 9090);
     }
 }

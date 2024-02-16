@@ -10,7 +10,7 @@ public class Server {
 
     public Server(int port) {
         try {
-            java.net.ServerSocket serverSocket = new ServerSocket(port);
+            ServerSocket serverSocket = new ServerSocket(port);
             System.out.println("Server started on " + serverSocket.getInetAddress() + ":" + serverSocket.getLocalPort() + " ...");
             while (true) {
                 Socket socket = serverSocket.accept();
@@ -29,6 +29,7 @@ public class Server {
             synchronized (clients) {
                 for (DataOutputStream dataOutputStream : clients.values()) {
                     dataOutputStream.writeUTF(msg);
+                    dataOutputStream.flush();
                 }
             }
         } catch (Exception e) {
