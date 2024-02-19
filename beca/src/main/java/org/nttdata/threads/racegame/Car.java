@@ -1,6 +1,6 @@
 package org.nttdata.threads.racegame;
-
 import java.awt.*;
+import java.util.concurrent.CountDownLatch;
 
 public class Car extends Canvas implements Runnable {
     private int x;
@@ -8,25 +8,28 @@ public class Car extends Canvas implements Runnable {
     private final String name;
     private int speed;
     private int finish;
+    private final CountDownLatch startSignal;
 
-    public Car(int x, Color color, String name, int finish) {
+    public Car(int x, Color color, String name, int finish, CountDownLatch startSignal) {
         this.x = x;
         this.color = color;
         this.name = name;
         this.finish = finish;
+        this.startSignal = startSignal;
         speed = (int)Math.floor(Math.random() * 100);
         setSize(120, 50);
     }
 
     @Override
     public void run() {
-        while (x < finish) {
-            advance(1);
-            try {
+        try {
+            startSignal.await();
+            while (x < finish) {
+                advance(1);
                 Thread.sleep(speed);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
@@ -44,5 +47,6 @@ public class Car extends Canvas implements Runnable {
 
         g.setColor(Color.BLACK);
         g.drawString(name, x + 10, 30);
+        startSignal.countDown();
     }
 }

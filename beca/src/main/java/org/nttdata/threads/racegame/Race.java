@@ -13,16 +13,18 @@ public class Race extends Panel {
 
         // list of colors
         Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.YELLOW, Color.ORANGE, Color.PINK, Color.MAGENTA, Color.CYAN, Color.LIGHT_GRAY, Color.DARK_GRAY};
+        
+        CountDownLatch startSignal = new CountDownLatch(numCars);
 
         for (int i = 0; i < numCars; i++) {
-            addCar(new Car(0, colors[i], "Car " + (i + 1), width - 140));
+            addCar(new Car(0, colors[i], "Car " + (i + 1), width - 140, startSignal));
         }
 
         this.validate();
+    }
 
-        for (Thread thread : threads) {
-            thread.start();
-        }
+    public void startRace() {
+        threads.forEach(Thread::start);
     }
 
     private void addCar(Car car) {
