@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Messages</title>
+    <title>Forum</title>
 </head>
 <body>
-<h1>Messages</h1>
+<h1>Forum</h1>
+<nav>
+    <ul>
+        <li><a href="index.jsp">Home</a></li>
+        <li><a href="login.jsp">Log In</a></li>
+    </ul>
+</nav>
