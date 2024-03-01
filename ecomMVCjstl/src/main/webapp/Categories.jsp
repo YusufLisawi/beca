@@ -1,7 +1,5 @@
 <%@ page language="java"%>
 <%@ page import="java.util.*"%>
-<%@ page import="model.*"%>
-<%@ page import="view.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
@@ -70,7 +68,7 @@
 	<form method='post' action='adminCategorie'>
 		<table border='1' style="text-align:right">
 			<tr>
-				<td>Chercher une catégorie:<input type='text' name='motCle'
+				<td>Chercher une catï¿½gorie:<input type='text' name='motCle'
 					value='${catForm.motCle}'></td>
 				<td><input type='submit' name='chercheCat' value='Chercher'></td>
 			</tr>
@@ -80,8 +78,8 @@
 		<table class="table table-striped table-hover">
 			<thead class="thead-dark">
 				<tr>
-					<th>Id Catégorie</th>
-					<th>Nom Catégorie</th>
+					<th>Id Catï¿½gorie</th>
+					<th>Nom Catï¿½gorie</th>
 					<th>Description</th>
 					<th>Action</th>
 				</tr>
