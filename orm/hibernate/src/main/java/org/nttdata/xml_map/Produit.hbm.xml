@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 14 oct. 2020 à 11:00:22 by Hibernate Tools 5.4.21.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="stock" dynamic-insert="false" dynamic-update="false" mutable="true" name="Produit" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="produit">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <many-to-one class="Categorie" embed-xml="true" fetch="select" insert="true" name="categorie" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="idCateg" not-null="true"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="designation" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="designation" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="prix" optimistic-lock="true" type="float" unique="false">
+            <column name="prix" not-null="true" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="quantite" optimistic-lock="true" type="int" unique="false">
+            <column name="quantite" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="sdr" optimistic-lock="true" type="int" unique="false">
+            <column name="sdr" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
