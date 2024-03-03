@@ -63,6 +63,7 @@ public class CategorieDAOImpl implements CategorieDAO {
 		
 		return CategoriesList;
 	}
+
 	@Override
 	public Categorie getCategorieById(int id) {
 		Session session = this.sessionFactory.getCurrentSession();	

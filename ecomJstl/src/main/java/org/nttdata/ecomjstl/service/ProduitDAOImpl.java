@@ -3,6 +3,7 @@ package org.nttdata.ecomjstl.service;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.nttdata.ecomjstl.dao.ProduitDAO;
+import org.nttdata.ecomjstl.model.Categorie;
 import org.nttdata.ecomjstl.model.Produit;
 import org.nttdata.ecomjstl.util.HibernateUtil;
 
@@ -74,5 +75,15 @@ public class ProduitDAOImpl implements ProduitDAO {
 		}
 		session.getTransaction().commit();
 		logger.info("Produit deleted successfully, Produit details="+categorie);
+	}
+
+	@Override
+	public List<Produit> selectProduitsByKeyword(String keyWord) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<Produit> produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+keyWord+"%'").list();
+		session.getTransaction().commit();
+
+		return produitsList;
 	}
 }

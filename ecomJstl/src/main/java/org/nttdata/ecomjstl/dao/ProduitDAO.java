@@ -11,4 +11,5 @@ public interface ProduitDAO {
 	public List<Produit> listProduits();
 	public Produit getProduitById(int id);
 	public void removeProduit(int id);
+	public List<Produit> selectProduitsByKeyword(String keyword);
 }
