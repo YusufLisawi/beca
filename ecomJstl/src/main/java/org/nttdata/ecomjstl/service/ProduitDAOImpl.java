@@ -78,10 +78,14 @@ public class ProduitDAOImpl implements ProduitDAO {
 	}
 
 	@Override
-	public List<Produit> selectProduitsByKeyword(String keyWord) {
+	public List<Produit> selectProduitsByKeyword(String motCle, String catKey) {
 		Session session = this.sessionFactory.getCurrentSession();
 		session.beginTransaction();
-		List<Produit> produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+keyWord+"%'").list();
+		List<Produit> produitsList;
+		if (catKey.isEmpty())
+			produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+motCle+"%'").list();
+		else
+			produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+motCle+"%' and categorie.id='" + catKey + "'").list();
 		session.getTransaction().commit();
 
 		return produitsList;

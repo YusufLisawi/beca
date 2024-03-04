@@ -7,16 +7,12 @@ import java.util.List;
 
 public class ProduitForm {
     private String motCle = "";
+    private String catKey = "";
     private int idProd;
-
     private String designation;
-
     private float prix;
-
     private int quantite;
-
     private int sdr;
-
     private Categorie idCat;
     private List<Produit> lesProds;
 
@@ -82,5 +78,13 @@ public class ProduitForm {
 
     public void setIdCat(Categorie idCat) {
         this.idCat = idCat;
+    }
+
+    public String getCatKey() {
+        return catKey;
+    }
+
+    public void setCatKey(String catKey) {
+        this.catKey = catKey;
     }
 }

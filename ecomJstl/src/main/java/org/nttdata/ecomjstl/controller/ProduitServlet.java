@@ -52,7 +52,8 @@ public class ProduitServlet extends HttpServlet {
             pf.setLesProds(prodDao.listProduits());
         } else if (request.getParameter("chercheProd") != null) {
             pf.setMotCle(request.getParameter("motCle"));
-            pf.setLesProds(prodDao.selectProduitsByKeyword(pf.getMotCle()));
+            pf.setCatKey(request.getParameter("catKey"));
+            pf.setLesProds(prodDao.selectProduitsByKeyword(pf.getMotCle(), pf.getCatKey()));
         } else {
             pf.setLesProds(prodDao.listProduits());
         }

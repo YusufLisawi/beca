@@ -5,15 +5,21 @@
 
 <jsp:useBean id="now" class="java.util.Date" />
 <h2>
-    <fmt:formatDate type="both" dateStyle="long" timeStyle="long"
-                    value="${now}" />
+    <fmt:formatDate type="both" dateStyle="long" timeStyle="long" value="${now}" />
 </h2>
 
 <form method='post' action='adminProduit'>
     <table border='1' style="text-align:right">
         <tr>
-            <td><fmt:message key="produit.search" />:<input type='text' name='motCle'
-                                                            value='${prodForm.motCle}'></td>
+            <td><fmt:message key="produit.search" />:
+                <input type='text' name='motCle' value='${prodForm.motCle}'>
+                <select name="catKey">
+                    <option value="" selected>---</option>
+                    <c:forEach items="${catForm.lesCats}" var="cat">
+                            <option value="${cat.id}" ${prodForm.catKey == cat.id ? 'selected' : ''}>${cat.nom}</option>
+                    </c:forEach>
+                </select>
+            </td>
             <td><input type='submit' name='chercheProd' value='Chercher'></td>
         </tr>
     </table>
@@ -64,9 +70,7 @@
     </table>
 </form>
 <script>
-    $(document).ready(function() {
-       document.title = <fmt:message key="produit.titre.page" />;
-       console.log("hello " , document.title)
-    });
+   document.title = <fmt:message key="produit.titre.page" />;
+   console.log("hello " , document.title)
 </script>
 <%@ include file="WEB-INF/jspf/footer.jspf"%>

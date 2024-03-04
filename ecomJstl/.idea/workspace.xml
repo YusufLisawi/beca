@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="ecomJstl:war" />
       <artifact name="ecomJstl:war exploded" />
     </artifacts-to-build>
   </component>
@@ -10,25 +11,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="28d842e0-84e6-4e41-bddc-f85aedfea999" name="Changes" comment="Added hibernate with jstl">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/controller/ProduitServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/view/ProduitForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Produits.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jspf/footer.jspf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jspf/header.jspf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ecomMVCjstl/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ecomMVCjstl/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ecomMVCjstl/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../ecomMVCjstl/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/controller/ProduitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/controller/ProduitServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/dao/ProduitDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/dao/ProduitDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/service/CategorieDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/service/CategorieDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/service/ProduitDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/service/ProduitDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/Bundle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/Bundle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_es.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_fr.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/bundles/Bundle_fr.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/Categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/view/ProduitForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl/view/ProduitForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Produits.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/Produits.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,28 +63,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Maven.ecomJstl [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.ecomJstl [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.19.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/yusufisawi/codes/beca/ecomJstl/src/main/java/org/nttdata/ecomjstl&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.48735633&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Maven.ecomJstl [clean].executor": "Run",
+    "Maven.ecomJstl [install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Tomcat Server.Tomcat 10.1.19.executor": "Run",
+    "Tomcat Server.Tomcat 9.0.86.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/yusufisawi/beca/ecomJstl",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.48735633",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/java/org/nttdata/ecomjstl" />
@@ -103,9 +93,9 @@
       <recent name="$PROJECT_DIR$/src/main/webapp" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.86">
     <configuration name="Tomcat 10.1.19" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.86" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="UPDATING_POLICY" value="update-resources" />
+      <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="ecomJstl:war exploded">
           <settings>
@@ -186,11 +176,106 @@
       </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="false" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 9.0.86" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.86" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="ecomJstl:war">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ecomJstl_war" />
+          </settings>
+        </artifact>
+        <artifact name="ecomJstl:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/ecomJstl_war_exploded" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="d0e27274-1523-4dc7-b2bd-1d558a17ca3a" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49334" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
+          <artifact name="ecomJstl:war" />
           <artifact name="ecomJstl:war exploded" />
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Tomcat 10.1.19" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.86" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -210,6 +295,7 @@
       <workItem from="1709288273808" duration="266000" />
       <workItem from="1709288553526" duration="7447000" />
       <workItem from="1709473512991" duration="184000" />
+      <workItem from="1709558221318" duration="4677000" />
     </task>
     <task id="LOCAL-00001" summary="Added hibernate with jstl">
       <option name="closed" value="true" />
