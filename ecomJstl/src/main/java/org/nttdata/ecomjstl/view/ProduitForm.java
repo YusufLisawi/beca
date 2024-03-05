@@ -15,6 +15,7 @@ public class ProduitForm {
     private int sdr;
     private Categorie idCat;
     private List<Produit> lesProds;
+    private List<Categorie> lesCats;
 
     public String getMotCle() {
         return motCle;
@@ -86,5 +87,13 @@ public class ProduitForm {
 
     public void setCatKey(String catKey) {
         this.catKey = catKey;
+    }
+
+    public List<Categorie> getLesCats() {
+        return lesCats;
+    }
+
+    public void setLesCats(List<Categorie> lesCats) {
+        this.lesCats = lesCats;
     }
 }

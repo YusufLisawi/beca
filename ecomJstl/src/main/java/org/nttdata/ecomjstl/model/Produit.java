@@ -27,7 +27,8 @@ public class Produit implements Serializable {
 
 	private int sdr;
 
-	//bi-directional many-to-one association to Categorie
+	private String image;
+
 	@ManyToOne
 	@JoinColumn(name="idCateg")
 	private Categorie categorie;
@@ -81,6 +82,14 @@ public class Produit implements Serializable {
 
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	@Override

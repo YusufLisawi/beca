@@ -15,7 +15,7 @@
                 <input type='text' name='motCle' value='${prodForm.motCle}'>
                 <select name="catKey">
                     <option value="" selected>---</option>
-                    <c:forEach items="${catForm.lesCats}" var="cat">
+                    <c:forEach items="${prodForm.lesCats}" var="cat">
                             <option value="${cat.id}" ${prodForm.catKey == cat.id ? 'selected' : ''}>${cat.nom}</option>
                     </c:forEach>
                 </select>
@@ -24,11 +24,12 @@
         </tr>
     </table>
 </form>
-<form method='post' action='adminProduit'>
+<form method='post' action='adminProduit' enctype="multipart/form-data">
     <table class="table table-striped table-hover">
         <thead class="thead-dark">
         <tr>
             <th>Id Produit</th>
+            <th>Image</th>
             <th>Designation</th>
             <th>Prix</th>
             <th>Quantite</th>
@@ -39,12 +40,13 @@
         <tbody>
         <tr>
             <td></td>
-            <td><input type='text' name='designation'></td>
-            <td><input type='text' name='prix'></td>
-            <td><input type='text' name='quantite'></td>
+            <td><input type='file' name='image' accept="image/*" required></td>
+            <td><input type='text' name='designation' required></td>
+            <td><input type='number' name='prix' required></td>
+            <td><input type='number' name='quantite' required></td>
             <td>
                 <select name="categoryId">
-                    <c:forEach items="${catForm.lesCats}" var="cat">
+                    <c:forEach items="${prodForm.lesCats}" var="cat">
                         <option value="${cat.id}">${cat.nom}</option>
                     </c:forEach>
                 </select>
@@ -55,6 +57,7 @@
             <c:forEach items="${prodForm.lesProds}" var="prod">
                 <tr>
                     <td>${prod.id}</td>
+                    <td><img src="${prod.image}" width="100" height="100"></td>
                     <td>${prod.designation}</td>
                     <td>${prod.prix}</td>
                     <td>${prod.quantite}</td>
@@ -70,7 +73,7 @@
     </table>
 </form>
 <script>
-   document.title = <fmt:message key="produit.titre.page" />;
+   document.title = "<fmt:message key="produit.titre.page" />";
    console.log("hello " , document.title)
 </script>
 <%@ include file="WEB-INF/jspf/footer.jspf"%>
