@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+<validators>
+   <field name = "nom">
+      <field-validator type = "required">
+         <message key="categorie.form.error.message.nom"/>
+      </field-validator>
+   </field>
+</validators>

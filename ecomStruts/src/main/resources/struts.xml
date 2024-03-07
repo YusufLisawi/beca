@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"https://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+	<constant name = "struts.devMode" value = "true" />
+   <constant name="struts.ui.theme" value="css_xhtml" />
+    <package name="default" extends="struts-default">
+        <default-action-ref name="listerCategories"/>
+        	
+    	<action name="listerCategories" 
+    	class="org.nttdata.ecomstruts.actions.CategorieAction"
+    	method="lister">
+            <result name="success">/jsp/listerCategories.jsp</result>
+            <result name="input">/jsp/listerCategories.jsp</result>
+        </action>
+        
+        <action name="saisirCategorie" 
+        		class="org.nttdata.ecomstruts.actions.CategorieAction" method="saisir">
+            <result name="success">/jsp/saisirCategorie.jsp</result>
+            <result name="input">/jsp/saisirContact.jsp</result>
+        </action>
+    	
+       <action name="enregistrerCategorie" 
+    	class="org.nttdata.ecomstruts.actions.CategorieAction"
+    	method="enregistrer">
+            <result name="success">/jsp/listerCategories.jsp</result>
+            <result name="input">/jsp/listerCategories.jsp</result>
+        </action>
+        
+        <action name="searchCategories" 
+        		class="org.nttdata.ecomstruts.actions.CategorieAction" method="searchCategories">
+            <result>/jsp/searchedCategories.jsp</result>
+            <result name="input">/jsp/searchedCategories.jsp</result>
+        </action>
+    </package>
+</struts>

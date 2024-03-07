@@ -7,91 +7,90 @@ import java.io.Serializable;
 
 /**
  * The persistent class for the produit database table.
- * 
  */
 @Entity
-@Table(name="produit")
-@NamedQuery(name="Produit.findAll", query="SELECT p FROM Produit p")
+@Table(name = "produit")
+@NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p")
 public class Produit implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	private String designation;
+    private String designation;
 
-	private float prix;
+    private float prix;
 
-	private int quantite;
+    private int quantite;
 
-	private int sdr;
+    private int sdr;
 
-	//bi-directional many-to-one association to Categorie
-	@ManyToOne
-	@JoinColumn(name="idCateg")
-	private Categorie categorie;
+    //bi-directional many-to-one association to Categorie
+    @ManyToOne
+    @JoinColumn(name = "idCateg")
+    private Categorie categorie;
 
-	public Produit() {
-	}
+    public Produit() {
+    }
 
-	public int getId() {
-		return this.id;
-	}
+    public int getId() {
+        return this.id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getDesignation() {
-		return this.designation;
-	}
+    public String getDesignation() {
+        return this.designation;
+    }
 
-	public void setDesignation(String designation) {
-		this.designation = designation;
-	}
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
 
-	public float getPrix() {
-		return this.prix;
-	}
+    public float getPrix() {
+        return this.prix;
+    }
 
-	public void setPrix(float prix) {
-		this.prix = prix;
-	}
+    public void setPrix(float prix) {
+        this.prix = prix;
+    }
 
-	public int getQuantite() {
-		return this.quantite;
-	}
+    public int getQuantite() {
+        return this.quantite;
+    }
 
-	public void setQuantite(int quantite) {
-		this.quantite = quantite;
-	}
+    public void setQuantite(int quantite) {
+        this.quantite = quantite;
+    }
 
-	public int getSdr() {
-		return this.sdr;
-	}
+    public int getSdr() {
+        return this.sdr;
+    }
 
-	public void setSdr(int sdr) {
-		this.sdr = sdr;
-	}
+    public void setSdr(int sdr) {
+        this.sdr = sdr;
+    }
 
-	public Categorie getCategorie() {
-		return this.categorie;
-	}
+    public Categorie getCategorie() {
+        return this.categorie;
+    }
 
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
-	}
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 
-	@Override
-	public String toString() {
-		return "Produit{" +
-				"id=" + id +
-				", designation='" + designation + '\'' +
-				", prix=" + prix +
-				", quantite=" + quantite +
-				", sdr=" + sdr +
-				", categorie=" + categorie +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Produit{" +
+                "id=" + id +
+                ", designation='" + designation + '\'' +
+                ", prix=" + prix +
+                ", quantite=" + quantite +
+                ", sdr=" + sdr +
+                ", categorie=" + categorie +
+                '}';
+    }
 }

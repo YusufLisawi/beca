@@ -1,18 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yusufisawi
-  Date: 3/3/2024
-  Time: 14:13
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Admin</title>
+  <title>JSP - Hello World</title>
 </head>
 <body>
-    <h1>Admin</h1>
-    <a href="adminProduit">Admin Produit</a>
-    <a href="adminCategorie">Admin Categorie</a>
+<h1><%= "Hello World!" %></h1>
+<br/>
+<a href="hello-servlet">Hello Servlet</a>
 </body>
 </html>
