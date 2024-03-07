@@ -54,14 +54,16 @@ public class ProduitDAOImpl implements ProduitDAO {
         return ProduitsList;
     }
 
-    @Override
-    public Produit getProduitById(int id) {
-        Session session = this.sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Produit categorie = (Produit) session.load(Produit.class, Integer.valueOf(id));
-        session.getTransaction().commit();
-        //logger.info("Produit loaded successfully, Produit details="+categorie);
-        return categorie;
+	@Override
+	public List<Produit> selectProduitsByKeyword(String motCle, String catKey) {
+		Session session = this.sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		List<Produit> produitsList;
+		if (catKey.isEmpty())
+			produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+motCle+"%'").list();
+		else
+			produitsList = session.createQuery("from Produit p WHERE p.designation LIKE '%"+motCle+"%' and categorie.id='" + catKey + "'").list();
+		session.getTransaction().commit();
     }
 
     @Override

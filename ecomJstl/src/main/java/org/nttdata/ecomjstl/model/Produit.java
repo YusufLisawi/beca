@@ -26,10 +26,11 @@ public class Produit implements Serializable {
 
     private int sdr;
 
-    //bi-directional many-to-one association to Categorie
-    @ManyToOne
-    @JoinColumn(name = "idCateg")
-    private Categorie categorie;
+	private String image;
+
+	@ManyToOne
+	@JoinColumn(name="idCateg")
+	private Categorie categorie;
 
     public Produit() {
     }
@@ -82,15 +83,23 @@ public class Produit implements Serializable {
         this.categorie = categorie;
     }
 
-    @Override
-    public String toString() {
-        return "Produit{" +
-                "id=" + id +
-                ", designation='" + designation + '\'' +
-                ", prix=" + prix +
-                ", quantite=" + quantite +
-                ", sdr=" + sdr +
-                ", categorie=" + categorie +
-                '}';
-    }
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@Override
+	public String toString() {
+		return "Produit{" +
+				"id=" + id +
+				", designation='" + designation + '\'' +
+				", prix=" + prix +
+				", quantite=" + quantite +
+				", sdr=" + sdr +
+				", categorie=" + categorie +
+				'}';
+	}
 }
