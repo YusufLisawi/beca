@@ -96,4 +96,11 @@ public class CategorieAction extends ActionSupport {
         listCategories = catal.selectCatByKeyword(motCle);
         return "success";
     }
+
+    public String deleteCategory() {
+        CategorieDAO catal = new CategorieDAOImpl();
+        catal.removeCategorie((int) id);
+        listCategories = catal.listCategories();
+        return "success";
+    }
 }

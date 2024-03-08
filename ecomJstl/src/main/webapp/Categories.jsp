@@ -13,8 +13,10 @@
 <form method='post' action='adminCategorie'>
     <table border='1' style="text-align:right">
         <tr>
-            <td><fmt:message key="categorie.search"/>:<input type='text' name='motCle'
-                                                             value='${catForm.motCle}'></td>
+            <td>
+                <fmt:message key="categorie.search"/>:
+                <input type='text' name='motCle' value='${catForm.motCle}'>
+            </td>
             <td><input type='submit' name='chercheCat' value='Chercher'></td>
         </tr>
     </table>

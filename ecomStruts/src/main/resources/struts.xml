@@ -7,7 +7,7 @@
 	<constant name = "struts.devMode" value = "true" />
    <constant name="struts.ui.theme" value="css_xhtml" />
     <package name="default" extends="struts-default">
-        <default-action-ref name="listerCategories"/>
+        <default-action-ref name="listerProduits"/>
         	
     	<action name="listerCategories" 
     	class="org.nttdata.ecomstruts.actions.CategorieAction"
@@ -33,6 +33,20 @@
         		class="org.nttdata.ecomstruts.actions.CategorieAction" method="searchCategories">
             <result>/jsp/searchedCategories.jsp</result>
             <result name="input">/jsp/searchedCategories.jsp</result>
+        </action>
+
+        <action name="deleteCategory" class="org.nttdata.ecomstruts.actions.CategorieAction" method="deleteCategory">
+            <result name="success" type="redirectAction">listCategories</result>
+        </action>
+
+        <action name="listerProduits" class="org.nttdata.ecomstruts.actions.ProduitAction" method="lister">
+            <result>/jsp/listerProduits.jsp</result>
+        </action>
+        <action name="saisirProduit" class="org.nttdata.ecomstruts.actions.ProduitAction" method="saisir">
+            <result>/jsp/saisirProduit.jsp</result>
+        </action>
+        <action name="deleteProduct" class="org.nttdata.ecomstruts.actions.ProduitAction" method="deleteProduct">
+            <result name="success" type="redirectAction">listProduits</result>
         </action>
     </package>
 </struts>
