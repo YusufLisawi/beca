@@ -80,6 +80,8 @@
                 <h:form id="formEdit" rendered="#{adminProduits.editMode}">
                     <p:panel header="Mise à jour des données">
                         <h:panelGrid columns="2" id="grid">
+                            <h:outputLabel value="Photo :" for="photo" />
+                            <h:graphicImage id="photo" value="#{adminProduits.selectedProduit.photo}" width="50" height="50"/>
                             <h:outputLabel value="Désignation : *" for="txt_designation" />
                             <p:inputText id="txt_designation" value="#{adminProduits.selectedProduit.designation}"
                                          required="true" />
@@ -87,7 +89,7 @@
                             <p:inputText id="txt_prix" value="#{adminProduits.selectedProduit.prix}"
                                          required="true" />
                             <h:outputLabel value="Quantite : *" for="txt_quantiteAdd" />
-                            <p:inputText id="txt_quantite" value="#{adminProduits.produitToAdd.quantite}"
+                            <p:inputText id="txt_quantite" value="#{adminProduits.selectedProduit.quantite}"
                                          required="true" />
 
                             <h:outputLabel value="Categorie : *" for="sel_categAdd" />
@@ -98,6 +100,8 @@
                                                itemValue="#{categ}" itemLabel="#{categ.nom}"/>
 
                             </h:selectOneMenu>
+                            <h:outputLabel value="photo : *" for="file_photo_upload" />
+                            <p:fileUpload id="file_photo_upload" value="#{adminProduits.file}" mode="simple" skinSimple="true"/>
                             <p:commandButton id="btn_cancel" value="Annuler"
                                              action="#{adminProduits.cancelUpdate}"  ajax="false"/>
                             <p:commandButton id="btn_update" value="Modifier"

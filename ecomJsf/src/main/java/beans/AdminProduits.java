@@ -71,6 +71,10 @@ public class AdminProduits implements Serializable {
             produitToAdd.setCategorie(selectedCategorie);
             if (file != null) {
                 String fileName = saveFile();
+                if (fileName == null) {
+                    addMessage(FacesMessage.SEVERITY_WARN, "Ajout échoué", "Erreur lors de l'ajout de le produit");
+                    return;
+                }
                 FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
                 produitToAdd.setPhoto(UPLOAD_DIR + File.separator + fileName);
                 FacesContext.getCurrentInstance().addMessage(null, message);
@@ -85,7 +89,6 @@ public class AdminProduits implements Serializable {
         addMode = false;
         produitToAdd = new Produit();
     }
-
 
     public List<Categorie> getAllCategories() {
         allCategories = categDao.listCategories();
@@ -105,15 +108,27 @@ public class AdminProduits implements Serializable {
             try (InputStream input = file.getInputStream()) {
                 Files.copy(input, newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
             }
+            return fileName;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     public void updateProduit() {
         if (selectedProduit != null) {
             selectedProduit.setCategorie(selectedCategorie);
-            System.out.println("Updating... => " + selectedProduit);
+            System.out.println("Updating... : " + selectedProduit);
+            if (file != null) {
+                String fileName = saveFile();
+                if (fileName == null) {
+                    addMessage(FacesMessage.SEVERITY_WARN, "Ajout échoué", "Erreur lors de l'ajout de le produit");
+                    return;
+                }
+                FacesMessage message = new FacesMessage("Successful", file.getFileName() + " is uploaded.");
+                selectedProduit.setPhoto(UPLOAD_DIR + File.separator + fileName);
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
             produitService.updateProduit(selectedProduit);
             System.out.println("Modification de produit avec Succès");
             addMessage(FacesMessage.SEVERITY_INFO, "Modification Réussie", "Modification de produit avec Succès");
@@ -121,7 +136,7 @@ public class AdminProduits implements Serializable {
             addMessage(FacesMessage.SEVERITY_WARN, "Modification échouée", "Erreur lors de la modification de produit");
         }
         editMode = false;
-
+        selectedProduit = new Produit();
     }
 
     public void deleteProduit() {
