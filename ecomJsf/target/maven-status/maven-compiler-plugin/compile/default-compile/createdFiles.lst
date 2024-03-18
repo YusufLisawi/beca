@@ -1,0 +1,12 @@
+beans/ThemeSwitcher.class
+service/Test.class
+service/CategorieDAOImpl.class
+model/Categorie.class
+service/ProduitDAOImpl.class
+model/Produit.class
+dao/CategorieDAO.class
+util/HibernateUtil.class
+model/User.class
+dao/ProduitDAO.class
+beans/AdminCategories.class
+converters/CategorieConverter.class
