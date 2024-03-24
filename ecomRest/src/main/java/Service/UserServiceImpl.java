@@ -50,6 +50,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @PUT
+    @Path("/update")
+    public Response updateUser(User u) {
+        Response response = new Response();
+        if (userDAO.getUserById(u.getId()) == null) {
+            response.setStatus(false);
+            response.setMessage("User Doesn't Exists");
+            return response;
+        }
+        userDAO.updateUser(u);
+        response.setStatus(true);
+        response.setMessage("User updated successfully");
+        return response;
+    }
+
+    @Override
     @GET
     @Path("/{id}")
     public User getUser(@PathParam("id") int id) {

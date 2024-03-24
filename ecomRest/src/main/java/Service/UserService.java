@@ -9,6 +9,7 @@ import java.util.Map;
 public interface UserService {
     public Response addUser(User u);
     public Response deleteUser(int id);
+    public Response updateUser(User u);
     public User getUser(int id);
     public List<User> getAllUsers();
 }
