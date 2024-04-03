@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head">
+    <title>eCom | Products</title>
+</head>
+<body>
+<div th:replace="layout :: navbar"></div>
+<div th:fragment="content">
+    <h1>List Products</h1>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Product Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="product : ${products}">
+            <th scope="row" th:text="${product.id}"></th>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.description}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <form th:action="@{/products/{id}(id=${product.id})}" method="post">
+                    <input type="submit" value="Delete" class="btn btn-danger">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
