@@ -3,10 +3,10 @@ package org.nttdata.ecomspring.controllers;
 import org.nttdata.ecomspring.entities.Product;
 import org.nttdata.ecomspring.services.ProductService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class ProductController {
@@ -17,16 +17,16 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String getProducts(Map<String, Object> model) {
+    public String getProducts(Model model) {
         List<Product> products = productService.getAllProducts();
-        model.put("products", products);
+        model.addAttribute("products", products);
         return "products";
     }
 
     @GetMapping("/products/{id}")
-    public String getProductById(@PathVariable(value = "id") Long id, Map<String, Object> model) {
+    public String getProductById(@PathVariable(value = "id") Long id, Model model) {
         Product product = productService.getProductById(id);
-        model.put("product", product);
+        model.addAttribute("product", product);
         return "product";
     }
 
@@ -48,4 +48,8 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
 }
