@@ -8,18 +8,34 @@
 <div th:fragment="content" class="container my-6 px-3">
     <h1 class="py-2">List Categories</h1>
 
+    <div th:if="${category != null}">
+        <form th:action="@{/categories/update}" method="post" class="py-2">
+            <div class="form-group">
+                <label for="categoryNameEdit">Category Name</label>
+                <input type="text" name="id" th:value="${category.id}" hidden="true">
+                <input type="text" class="form-control" id="categoryNameEdit" name="name" th:value="${category.name}" required>
+            </div>
+            <div class="form-group">
+                <label for="categoryDescriptionEdit">Description</label>
+                <input type="text" class="form-control" id="categoryDescriptionEdit" name="description" th:value="${category.description}" required>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Save</button>
+        </form>
+    </div>
     <!-- Add Category Form -->
-    <form th:action="@{/categories}" method="post" class="py-2">
-        <div class="form-group">
-            <label for="categoryName">Category Name</label>
-            <input type="text" class="form-control" id="categoryName" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="categoryDescription">Description</label>
-            <input type="text" class="form-control" id="categoryDescription" name="description" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Category</button>
-    </form>
+    <div th:unless="${category != null}">
+        <form th:action="@{/categories}" method="post" class="py-2">
+            <div class="form-group">
+                <label for="categoryName">Category Name</label>
+                <input type="text" class="form-control" id="categoryName" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="categoryDescription">Description</label>
+                <input type="text" class="form-control" id="categoryDescription" name="description" required>
+            </div>
+            <button type="submit" class="btn btn-primary my-2">Save</button>
+        </form>
+    </div>
 
     <table class="table py-2">
         <thead class="table-dark">
@@ -36,6 +52,9 @@
             <td th:text="${category.name}"></td>
             <td th:text="${category.description}"></td>
             <td>
+                <a th:href="@{/categories/{id}(id=${category.id})}">
+                    <button class="btn btn-primary">Edit</button>
+                </a>
                 <form th:action="@{/categories/{id}(id=${category.id})}" method="post">
                     <input type="submit" value="Delete" class="btn btn-danger">
                 </form>

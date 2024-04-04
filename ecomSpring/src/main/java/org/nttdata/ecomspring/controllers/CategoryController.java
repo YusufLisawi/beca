@@ -19,7 +19,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public String getCategories(Map<String, Object> model) {
         List<Category> categories = categoryService.getAllCategories();
         model.put("categories", categories);
@@ -27,39 +27,27 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public String getCategoryById(@PathVariable(value = "id") Long id, Map<String, Object> model) {
-        Category category = categoryService.getCategoryById(id);
-        model.put("category", category);
-        return "category";
-    }
-
-    @GetMapping("edit/{id}")
     public String getCategoryById(@PathVariable(value = "id") Long id, Model model) {
         Category category = categoryService.getCategoryById(id);
-        model.addAttribute("editCategory", category);
+        model.addAttribute("category", category);
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "categories";
     }
 
-    @PostMapping("/save")
+    @PostMapping("")
     public String addCategory(Category category) {
         categoryService.addCategory(category);
         return "redirect:/categories";
     }
 
-//    @GetMapping("/add")
-//    public String addCategoryPage(Model model) {
-//
-//        categoryService.addCategory();
-//        return "redirect:/categories";
-//    }
-
-    @PostMapping("/update")
-    public String updateCategory(Category category) {
+    @PostMapping("update")
+    public String updateCategory(Category category, Model model) {
         categoryService.updateCategory(category);
+        model.addAttribute("category", null);
         return "redirect:/categories";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping("/{id}")
     public String deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
         return "redirect:/categories";

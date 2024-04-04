@@ -27,7 +27,9 @@ public class ProductController {
     public String getProductById(@PathVariable(value = "id") Long id, Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
-        return "product";
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
+        return "products";
     }
 
     @PostMapping("/products")
