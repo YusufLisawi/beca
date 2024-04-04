@@ -20,6 +20,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class ProductController {
@@ -52,6 +53,9 @@ public class ProductController {
                                  @RequestParam(defaultValue = "5") int size,
                                  Model model) {
         Product product = productService.getProductById(id);
+        if (product == null) {
+            return "redirect:/products";
+        }
         model.addAttribute("product", product);
         addCategoriesToModel(model);
         addProductsToModel(model, PageRequest.of(page, size));
@@ -82,6 +86,9 @@ public class ProductController {
         StringBuilder fileNames = new StringBuilder();
         Resource resource = resourceLoader.getResource(UPLOAD_DIRECTORY);
         Path uploadPath = Paths.get(resource.getURI());
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
         Path fileNameAndPath = uploadPath.resolve(file.getOriginalFilename());
         fileNames.append(file.getOriginalFilename());
         Files.write(fileNameAndPath, file.getBytes());

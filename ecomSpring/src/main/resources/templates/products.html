@@ -114,13 +114,13 @@
                     <a class="page-link" th:href="@{/products(size=${products.size}, page=${pageNumber})}"
                        th:text="${pageNumber + 1}"></a>
                 </li>
-                <li class="page-item" th:if="${products.number < 0 }">
+                <li class="page-item" th:if="${products.number < products.totalPages - 1}">
                     <a class="page-link" th:href="@{/products(size=${products.size}, page=${products.number + 1})}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
-                <li class="page-item" th:if="${products.number >= 0}">
-                    <a class="page-link"th:href="@{/products(size=${products.size}, page=${products.number + 1})}" aria-label="Next">
+                <li class="page-item" th:if="${products.number >= products.totalPages - 1}">
+                    <a class="page-link" th:href="@{#}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
