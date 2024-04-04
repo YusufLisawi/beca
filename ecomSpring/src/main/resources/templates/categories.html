@@ -15,7 +15,7 @@
                 <input type="text" name="id" th:value="${category.id}" hidden="true">
                 <input type="text" class="form-control" id="categoryNameEdit" name="name" th:value="${category.name}" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label for="categoryDescriptionEdit">Description</label>
                 <input type="text" class="form-control" id="categoryDescriptionEdit" name="description" th:value="${category.description}" required>
             </div>
@@ -29,7 +29,7 @@
                 <label for="categoryName">Category Name</label>
                 <input type="text" class="form-control" id="categoryName" name="name" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-2">
                 <label for="categoryDescription">Description</label>
                 <input type="text" class="form-control" id="categoryDescription" name="description" required>
             </div>
@@ -51,7 +51,7 @@
             <th scope="row" th:text="${category.id}"></th>
             <td th:text="${category.name}"></td>
             <td th:text="${category.description}"></td>
-            <td>
+            <td class="actions">
                 <a th:href="@{/categories/{id}(id=${category.id})}">
                     <button class="btn btn-primary">Edit</button>
                 </a>

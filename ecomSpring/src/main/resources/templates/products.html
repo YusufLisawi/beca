@@ -23,13 +23,19 @@
                 <label for="productPriceEdit">Price</label>
                 <input type="number" step="0.01" class="form-control" id="productPriceEdit" name="price" th:value="${product.price}" required>
             </div>
+            <div class="form-group mb-2">
+                <label for="productCategoryEdit">Category</label>
+                <select class="form-select" id="productCategoryEdit" name="category" required>
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${product.category != null ? product.category.id == category.id : false}"></option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 
     <!-- Add Product Form -->
     <div th:unless="${product != null}">
-        <form th:action="@{/products}" method="post" class="py-2">
+        <form th:action="@{/products}" method="post" class="py-2" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" class="form-control" id="productName" name="name" required>
@@ -42,6 +48,16 @@
                 <label for="productPrice">Price</label>
                 <input type="number" step="0.01" class="form-control" id="productPrice" name="price" required>
             </div>
+            <div class="form-group">
+                <label for="productCategory">Category</label>
+                <select class="form-select" id="productCategory" name="category" required>
+                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image</label>
+                <input class="form-control" name="image" accept="image/*" type="file" id="formFile">
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
@@ -50,19 +66,23 @@
         <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Image</th>
             <th scope="col">Product Name</th>
             <th scope="col">Description</th>
             <th scope="col">Price</th>
+            <th scope="col">Category</th>
             <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="product : ${products}">
             <th scope="row" th:text="${product.id}"></th>
+            <td><img th:src="${UPLOAD_DIRECTORY + product.imageUrl}" alt="Product image" width="50" height="50"/></td>
             <td th:text="${product.name}"></td>
             <td th:text="${product.description}"></td>
             <td th:text="${product.price}"></td>
-            <td>
+            <td th:text="${product.category != null ? product.category.name : 'No category'}"></td>
+            <td class="actions">
                 <a th:href="@{/products/{id}(id=${product.id})}">
                     <button class="btn btn-primary">Edit</button>
                 </a>
