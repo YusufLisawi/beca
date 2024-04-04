@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Map;
 
@@ -20,9 +23,12 @@ public class CategoryController {
     }
 
     @GetMapping("")
-    public String getCategories(Map<String, Object> model) {
-        List<Category> categories = categoryService.getAllCategories();
-        model.put("categories", categories);
+    public String getCategories(@RequestParam(defaultValue = "0") int page,
+                                @RequestParam(defaultValue = "5") int size,
+                                Model model) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Category> categoryPage = categoryService.getAllCategories(pageable);
+        model.addAttribute("categories", categoryPage);
         return "categories";
     }
 

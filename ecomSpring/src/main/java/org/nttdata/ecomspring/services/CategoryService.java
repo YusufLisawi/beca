@@ -2,6 +2,8 @@ package org.nttdata.ecomspring.services;
 
 import org.nttdata.ecomspring.entities.Category;
 import org.nttdata.ecomspring.repositories.CategoryRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,10 @@ public class CategoryService {
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    public Page<Category> getAllCategories(Pageable pageable) {
+        return categoryRepository.findAll(pageable);
     }
 
     public Category getCategoryById(Long id) {

@@ -6,6 +6,9 @@ import org.nttdata.ecomspring.services.CategoryService;
 import org.nttdata.ecomspring.services.ProductService;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -35,18 +38,23 @@ public class ProductController {
     }
 
     @GetMapping("/products")
-    public String getProducts(Model model) {
+    public String getProducts(@RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "5") int size,
+                              Model model) {
         addCategoriesToModel(model);
-        addProductsToModel(model);
+        addProductsToModel(model, PageRequest.of(page, size));
         return "products";
     }
 
     @GetMapping("/products/{id}")
-    public String getProductById(@PathVariable(value = "id") Long id, Model model) {
+    public String getProductById(@PathVariable(value = "id") Long id,
+                                 @RequestParam(defaultValue = "0") int page,
+                                 @RequestParam(defaultValue = "5") int size,
+                                 Model model) {
         Product product = productService.getProductById(id);
         model.addAttribute("product", product);
         addCategoriesToModel(model);
-        addProductsToModel(model);
+        addProductsToModel(model, PageRequest.of(page, size));
         return "products";
     }
 
@@ -86,8 +94,8 @@ public class ProductController {
         model.addAttribute("categories", categories);
     }
 
-    private void addProductsToModel(Model model) {
-        List<Product> products = productService.getAllProducts();
+    private void addProductsToModel(Model model, Pageable pageable) {
+        Page<Product> products = productService.getAllProducts(pageable);
         model.addAttribute("products", products);
         model.addAttribute("UPLOAD_DIRECTORY", UPLOAD_PATH);
     }

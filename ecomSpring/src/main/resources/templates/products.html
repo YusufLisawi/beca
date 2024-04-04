@@ -29,6 +29,11 @@
                     <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}" th:selected="${product.category != null ? product.category.id == category.id : false}"></option>
                 </select>
             </div>
+            <div class="form-group mb-3">
+                <label for="formFileEdit" class="form-label">Image</label>
+                <img th:src="${UPLOAD_DIRECTORY + product.imageUrl}" alt="Product image" width="50" height="50"/>
+                <input class="form-control" name="image" accept="image/*" type="file" id="formFileEdit">
+            </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
@@ -54,9 +59,9 @@
                     <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
                 </select>
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label for="formFile" class="form-label">Image</label>
-                <input class="form-control" name="image" accept="image/*" type="file" id="formFile">
+                <input class="form-control" name="image" accept="image/*" type="file" id="formFile" required>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
         </form>
@@ -91,6 +96,37 @@
                 </form>
             </td>
         </tr>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:if="${products.number > 0}">
+                    <a class="page-link" th:href="@{/products(size=${products.size}, page=${products.number - 1})}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:if="${products.number <= 0}">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:each="pageNumber : ${#numbers.sequence(0, products.totalPages - 1)}"
+                    th:class="${pageNumber == products.number ? 'active' : ''}">
+                    <a class="page-link" th:href="@{/products(size=${products.size}, page=${pageNumber})}"
+                       th:text="${pageNumber + 1}"></a>
+                </li>
+                <li class="page-item" th:if="${products.number < 0 }">
+                    <a class="page-link" th:href="@{/products(size=${products.size}, page=${products.number + 1})}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item" th:if="${products.number >= 0}">
+                    <a class="page-link"th:href="@{/products(size=${products.size}, page=${products.number + 1})}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+
+            </ul>
+        </nav>
         </tbody>
     </table>
 </div>
